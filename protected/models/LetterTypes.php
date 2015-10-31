@@ -29,8 +29,6 @@ class LetterTypes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('iddp0_letter_types', 'required'),
-			array('iddp0_letter_types', 'numerical', 'integerOnly'=>true),
 			array('category', 'length', 'max'=>15),
 			array('name', 'length', 'max'=>20),
 			// The following rule is used by search().

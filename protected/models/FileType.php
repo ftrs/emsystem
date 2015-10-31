@@ -25,8 +25,6 @@ class FileType extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('iddp0_file_type', 'required'),
-			array('iddp0_file_type', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

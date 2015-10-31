@@ -7,6 +7,7 @@
  * @property integer $iddp0_country
  * @property string $name
  * @property string $country_code
+ * @property integer $iddp0_continents
  */
 class Country extends CActiveRecord
 {
@@ -26,13 +27,12 @@ class Country extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('iddp0_country', 'required'),
-			array('iddp0_country', 'numerical', 'integerOnly'=>true),
+			array('iddp0_continents', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>50),
 			array('country_code', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('iddp0_country, name, country_code', 'safe', 'on'=>'search'),
+			array('iddp0_country, name, country_code, iddp0_continents', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,6 +56,7 @@ class Country extends CActiveRecord
 			'iddp0_country' => 'Iddp0 Country',
 			'name' => 'Name',
 			'country_code' => 'Country Code',
+			'iddp0_continents' => 'Iddp0 Continents',
 		);
 	}
 
@@ -80,6 +81,7 @@ class Country extends CActiveRecord
 		$criteria->compare('iddp0_country',$this->iddp0_country);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('country_code',$this->country_code,true);
+		$criteria->compare('iddp0_continents',$this->iddp0_continents);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
