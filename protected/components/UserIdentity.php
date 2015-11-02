@@ -17,6 +17,25 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
+            
+            		$user=Users::model()->findByAttributes(array("username"=>$this->username));
+		if(!isset($user))
+			$this->errorCode=self::ERROR_USERNAME_INVALID;
+                else if($this->password != $user->password)//You should salt your password using CPasswordHelper
+                    $this->errorCode=self::ERROR_PASSWORD_INVALID;
+		else{
+			$this->errorCode=self::ERROR_NONE;
+ 
+                        $this->setState("id", $user->iddp1_users);
+                        $this->setState("firstName", $user->firstName);
+                        $this->setState("lastName", $user->lastName);
+                        $this->setState("userType", $user->userType);
+                        $user->save();
+                }
+		return !$this->errorCode;
+            
+            
+            /*
 		$users=array(
 			// username => password
 			'demo'=>'demo',
@@ -29,5 +48,7 @@ class UserIdentity extends CUserIdentity
 		else
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;
+             * 
+             */
 	}
 }
