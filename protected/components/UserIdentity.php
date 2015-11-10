@@ -27,9 +27,17 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_NONE;
  
                         $this->setState("id", $user->iddp1_users);
-                        $this->setState("firstName", $user->firstName);
-                        $this->setState("lastName", $user->lastName);
-                        $this->setState("userType", $user->userType);
+                     /*   echo "<pre>";
+                       print_r($user);
+                       var_dump($user);
+                       echo "</pre>";
+                      $model=Profile::model()->findAllByAttributes(
+  array('iddp3Profile'=>$user->iddp3_profile), 
+  array('with'=>'member')*/
+                      // $this->setState("firstName", $user->iddp3Profile->firstName);
+                       // $this->setState("lastName", $user->iddp3Profile->lastName);
+                       // $this->setState("userType", $user->userType);
+                       // die();
                         $user->save();
                 }
 		return !$this->errorCode;

@@ -53,7 +53,7 @@ class Users extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'iddp3Profile' => array(self::BELONGS_TO, 'Dp3Profile', 'iddp3_profile'),
+			'iddp3Profile' => array(self::BELONGS_TO, 'Profile', 'iddp3_profile'),
 		);
 	}
 
@@ -94,7 +94,8 @@ class Users extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('iddp1_users',$this->iddp1_users);
-		$criteria->compare('iddp3_profile',$this->iddp3_profile);
+		//$criteria->compare('iddp3_profile',$this->iddp3_profile);
+                $criteria->with= array('iddp3_profile');
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('available_reviewer',$this->available_reviewer);
